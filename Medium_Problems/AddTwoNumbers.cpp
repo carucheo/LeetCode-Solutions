@@ -39,32 +39,37 @@ Tags: Linked List, Math, Simulation
  * };
  */
 
-class Solution {
+class Solution
+{
 public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
+    {
         // Dummy head simplifies list construction
-        ListNode* dummy_head = new ListNode();
-        ListNode* current = dummy_head; // Tracks the end of the result list
+        ListNode *dummy_head = new ListNode();
+        ListNode *current = dummy_head; // Tracks the end of the result list
         int carry = 0;                  // Holds carry from each digit addition
 
         // Loop until both lists are fully processed and there's no carry left
-        while (l1 != nullptr || l2 != nullptr || carry != 0) {
+        while (l1 != nullptr || l2 != nullptr || carry != 0)
+        {
             // Get values from current nodes, or use 0 if a list is shorter
             int val1 = (l1 != nullptr) ? l1->val : 0;
             int val2 = (l2 != nullptr) ? l2->val : 0;
 
             // Calculate sum of current digits and carry
             int sum = val1 + val2 + carry;
-            int digit = sum % 10;      // Digit to store in new node
-            carry = sum / 10;          // Carry to use in next iteration
+            int digit = sum % 10; // Digit to store in new node
+            carry = sum / 10;     // Carry to use in next iteration
 
             // Create new node with the digit and link it to the result list
             current->next = new ListNode(digit);
-            current = current->next;   // Advance to the new tail
+            current = current->next; // Advance to the new tail
 
             // Move to the next nodes in each input list (if they exist)
-            if (l1 != nullptr) l1 = l1->next;
-            if (l2 != nullptr) l2 = l2->next;
+            if (l1 != nullptr)
+                l1 = l1->next;
+            if (l2 != nullptr)
+                l2 = l2->next;
         }
 
         // Return the real start of the result list (skipping dummy head because that is 0)
