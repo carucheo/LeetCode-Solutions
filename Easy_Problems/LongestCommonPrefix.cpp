@@ -31,19 +31,19 @@ public:
         if (strs.empty())
             return "";
 
-        // Start by assuming the entire first string is the common prefix
+        // Initialize prefix to the first string in the vector
         string prefix = strs[0];
 
-        // Iterate through the rest of the strings
+        // Loop through each string starting from the second one
         for (int i = 1; i < strs.size(); ++i)
         {
-            // While the current string doesn't start with the prefix
-            while (strs[i].find(prefix) != 0)
+            // While the current string does not start with the prefix
+            while (strs[i].substr(0, prefix.length()) != prefix)
             {
-                // Trim the last character from the prefix
-                prefix = prefix.substr(0, prefix.length() - 1);
+                // Remove the last character from prefix to try a shorter prefix
+                prefix.pop_back();
 
-                // If prefix becomes empty, there is no common prefix
+                // If prefix is empty, it means no common prefix exists
                 if (prefix.empty())
                     return "";
             }
