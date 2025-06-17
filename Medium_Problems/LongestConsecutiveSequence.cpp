@@ -43,11 +43,9 @@ public:
 
         int longest = 0; // Tracks the longest consecutive sequence found
 
-        // Iterate through each number in the original array
-        for (int i = 0; i < nums.size(); i++)
+        // Iterate through each unique number in the unordered_set
+        for (auto num : numSet)
         {
-            int num = nums[i];
-
             // Only start counting if 'num' is the beginning of a sequence
             if (numSet.count(num - 1) == 0)
             {
